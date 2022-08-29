@@ -17,9 +17,6 @@
     </li>
   <li>
       <a href="#documentation">Documentation</a>
-      <ul>
-        <li><a href="#postman">Postman Collection</a></li>
-      </ul>
     </li>
 </ol>
 
@@ -72,4 +69,4 @@ yarn start
 
 ## Documentation
 
-[Postman Collection](https://documenter.getpostman.com/view/20407154/UzBqqRBN)
+- [Postman Collection](https://documenter.getpostman.com/view/20407154/UzBqqRBN)

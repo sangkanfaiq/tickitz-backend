@@ -76,7 +76,7 @@ module.exports = {
         } = previousData;
 
         db.query(
-          `UPDATE schedule SET movieID='${movieID}', cinemaID='${cinemaID}', locationID='${locationID}', dateStart='${dateStart}', dateEnd='${dateEnd}', time='${time}' WHERE id='${id}'`,
+          `UPDATE schedule SET movieID='${movieID}', cinemaID='${cinemaID}', locationID='${locationID}', dateStart='${dateStart}', dateEnd='${dateEnd}', time='${time}' WHERE scheduleID='${scheduleID}'`,
           (err, results) => {
             if (err) {
               console.log(err);

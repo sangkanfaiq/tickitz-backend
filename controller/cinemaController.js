@@ -19,7 +19,16 @@ module.exports = {
   },
   updateCinema: async (req, res) => {
     try {
-      const results = await Cinema.update(req, res);
+      let reqModifier = {
+        ...req,
+      };
+      if(req.file) {
+        reqModifier = {
+          ...req,
+          body: { ...req.body, cinemaCover: req.file.filename },
+        }
+      }
+      const results = await Cinema.update(reqModifier, res);
       return res.status(201).send(results);
     } catch (error) {
       return res.status(400).send(error);

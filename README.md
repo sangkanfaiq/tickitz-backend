@@ -6,6 +6,7 @@
       <ul>
         <li><a href="#feature">Feature</a></li>
         <li><a href="#feature">Author</a></li>
+        <li><a href="#related">Related Project</a></li>
       </ul>
     </li>
     <li>
@@ -31,6 +32,9 @@ Tickitz backend made with express js, nodejs, mysql
 
 ### Author
 [Sangkan Faiq](https://github.com/sangkanfaiq)
+
+### Related Project
+[Tickitz Frontend](https://github.com/sangkanfaiq/tickitz)
 
 ## Getting Started
 

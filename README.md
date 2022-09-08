@@ -5,8 +5,8 @@
       <a href="#about-the-project">About The Project</a>
       <ul>
         <li><a href="#feature">Feature</a></li>
-        <li><a href="#feature">Author</a></li>
-        <li><a href="#related">Related Project</a></li>
+        <li><a href="#author">Author</a></li>
+        <li><a href="#related-project">Related Project</a></li>
       </ul>
     </li>
     <li>

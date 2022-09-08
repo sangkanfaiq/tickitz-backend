@@ -7,6 +7,7 @@
         <li><a href="#feature">Feature</a></li>
         <li><a href="#author">Author</a></li>
         <li><a href="#related-project">Related Project</a></li>
+        <li><a href="#built-with">Built with</a></li>
       </ul>
     </li>
     <li>
@@ -34,7 +35,16 @@ Tickitz backend made with express js, nodejs, mysql
 [Sangkan Faiq](https://github.com/sangkanfaiq)
 
 ### Related Project
-[Tickitz Frontend](https://github.com/sangkanfaiq/tickitz)
+- [Tickitz Frontend](https://github.com/sangkanfaiq/tickitz)
+- [Tickitz Admin Page](https://github.com/sangkanfaiq/tickitz-admin)
+
+### Built with
+- [Express JS](https://expressjs.com/en/starter/installing.html)
+- [MySQL](https://www.npmjs.com/package/mysql)
+- [Moment js](https://momentjs.com/)
+- [CORS](https://www.npmjs.com/package/cors)
+- [Multer](https://www.npmjs.com/package/multer)
+- [dotenv](https://www.npmjs.com/package/dotenv)
 
 ## Getting Started
 

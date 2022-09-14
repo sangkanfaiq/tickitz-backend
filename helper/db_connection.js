@@ -1,5 +1,5 @@
 //connect ke database
-const mysql = require("mysql");
+const mysql = require("mysql2");
 const { host, user, password, database } = process.env;
 
 const db = mysql.createConnection({

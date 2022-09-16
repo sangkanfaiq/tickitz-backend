@@ -11,11 +11,13 @@ module.exports = {
       const offset = (page - 1) * limit;
 
       const sql = `SELECT * FROM movies
-      ${title ? `WHERE title LIKE '%${title}%'`: ""}
-      ${genre ? `WHERE genre LIKE '%${genre}%'` : ""}
+      WHERE title LIKE '%${title}%'
+      ${genre ? `AND genre LIKE '%${genre}%'` : ""}
       ORDER BY created_at ASC
       LIMIT ${limit} 
       OFFSET ${offset}`;
+
+      // ${title ? `WHERE title LIKE '%${title}%'`: ""}
 
       db.query(sql, (err, results) => {
         if (err) {

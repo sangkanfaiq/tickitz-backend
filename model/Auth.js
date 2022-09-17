@@ -10,7 +10,7 @@ module.exports = {
     const { email, password } = req.body;
     return new Promise((resolve, reject) => {
       db.query(
-        `SELECT userID, password, role FROM users WHERE email='${email.toLowerCase()}'`,
+        `SELECT userID, password, firstName, lastName, phoneNumber, role FROM users WHERE email='${email.toLowerCase()}'`,
         (err, results) => {
           if (err) {
             console.log(err)
@@ -26,7 +26,7 @@ module.exports = {
                   })
                 }
                 if(successHashing) {
-                  const token = jwt.sign({ user_id: results[0].userID, role: results[0].role}, process.env.JWT_SECRET_KEY, {expiresIn: '1 day'});
+                  const token = jwt.sign({ user_id: results[0].userID, firstName:results[0].firstName, lastName: results[0].lastName, phoneNumber:results[0].phoneNumber, role: results[0].role}, process.env.JWT_SECRET_KEY, {expiresIn: '1 day'});
                   resolve({
                     message: "Login success",
                     status: 200,
@@ -34,6 +34,9 @@ module.exports = {
                       token,
                       user_id: results[0].userID,
                       email: email,
+                      firstName: results[0].firstName,
+                      lastName: results[0].lastName,
+                      phoneNumber: results[0].phoneNumber,
                       role: results[0].role
                     },
                   });

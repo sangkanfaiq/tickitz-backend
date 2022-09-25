@@ -8,6 +8,7 @@ module.exports = {
       const sql = `SELECT * FROM booking 
       LEFT JOIN schedule on booking.scheduleID = schedule.scheduleID
       LEFT JOIN movies on schedule.movieID = movies.movieID
+      LEFT JOIN cinema on schedule.cinemaID = cinema.cinemaID
       ORDER BY booking.created_at DESC`;
       db.query(sql, (err, results) => {
         if (err) {

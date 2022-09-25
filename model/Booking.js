@@ -50,7 +50,7 @@ module.exports = {
       const { scheduleID, user_id, seats, selected_time } = req.body;
 
       db.query(
-        `INSERT INTO booking(scheduleID, user_id, seats) VALUES('${scheduleID}', '${user_id}', '${seats}', '${selected_time}')`,
+        `INSERT INTO booking(scheduleID, user_id, seats, selected_time) VALUES('${scheduleID}', '${user_id}', '${seats}', '${selected_time}')`,
         (err, results) => {
           if (err) {
             console.log(err);

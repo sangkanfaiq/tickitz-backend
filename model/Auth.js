@@ -63,7 +63,7 @@ module.exports = {
           reject({ message: "Something wrong" });
         } else {
           db.query(
-            `INSERT INTO users(firstName, lastName, phoneNumber, city, country, balance, email, password, image) VALUES('${firstName}', '${lastName}', '${phoneNumber}', '${city}', '${country}', '${balance}', '${email}', '${hashedPassword}', '${image}')`,
+            `INSERT INTO users(firstName, lastName, phoneNumber, city, country, balance, email, password, image) VALUES('${firstName}', '${lastName}', '${phoneNumber}', '${city}', '${country}', ${balance}, '${email}', '${hashedPassword}', '${image}')`,
             (err, results) => {
               if (err) {
                 reject({ message: "Email already used" });

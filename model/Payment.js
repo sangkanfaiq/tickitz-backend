@@ -5,7 +5,9 @@ module.exports = {
     // get done
     return new Promise((resolve, reject) => {
       //   const { title = "", director = "" } = req.query;
-      const sql = `SELECT * FROM payment`;
+      const sql = `SELECT * FROM payment 
+      LEFT JOIN booking on payment.id_booking = booking.id_booking
+      ORDER BY payment.created_at DESC`;
       db.query(sql, (err, results) => {
         if (err) {
           reject({
@@ -20,26 +22,47 @@ module.exports = {
       });
     });
   },
-  add: (req, res) => {
-    // add done
+  getById: (req, res) => {
     return new Promise((resolve, reject) => {
-      const { movieID, userID, bookingID, paymentMethodID } = req.body;
-      const sql = `INSERT INTO payment(movieID, userID, bookingID, paymentMethodID) VALUES ('${movieID}', '${userID}','${bookingID}','${paymentMethodID}')`;
+      const {paymentID} = req.params
+      const sql = `SELECT * FROM movies WHERE paymentID=${paymentID}`;
 
       db.query(sql, (err, results) => {
         if (err) {
-          console.log(err);
-          reject({ message: "Something error" });
+          reject({
+            message: "Something wrong",
+          });
         }
         resolve({
-          message: "Add new payment success",
+          message: "Get payment by id success",
           status: 200,
-          data: {
-            id: results.insertId,
-            ...req.body,
-          },
+          data: results,
         });
       });
+    });
+  },
+  add: (req, res) => {
+    // add done
+    return new Promise((resolve, reject) => {
+      const { id } = req.body;
+
+      db.query(
+        `INSERT INTO payment(id) VALUES('${id}')`,
+        (err, results) => {
+          if (err) {
+            console.log(err);
+            reject({ message: "Something wrong" });
+          }
+          resolve({
+            message: "Add new payment success",
+            status: 200,
+            data: {
+              id: results.insertId,
+              ...req.body,
+            },
+          });
+        }
+      );
     });
   },
   update: (req, res) => {

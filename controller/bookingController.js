@@ -9,6 +9,14 @@ module.exports = {
       return res.send(error);
     }
   },
+  getBookingById: async (req, res) => {
+    try {
+      const results = await Booking.getById(req, res);
+      return res.status(200).send(results);
+    } catch (error) {
+      return res.send(error);
+    }
+  },
   addNewBooking: async (req, res) => {
     try {
       const results = await Booking.add(req, res);

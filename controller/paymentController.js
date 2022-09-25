@@ -9,6 +9,14 @@ module.exports = {
       return res.send(error);
     }
   },
+  getPaymentById: async (req, res) => {
+    try {
+      const results = await Payment.getById(req, res);
+      return res.status(200).send(results);
+    } catch (error) {
+      return res.send(error);
+    }
+  },
   addNewPayment: async (req, res) => {
     try {
       const results = await Payment.add(req, res);

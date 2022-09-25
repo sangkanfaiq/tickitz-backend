@@ -6,8 +6,8 @@ module.exports = {
     return new Promise((resolve, reject) => {
       //   const { title = "", director = "" } = req.query;
       const sql = `SELECT * FROM booking 
-      LEFT JOIN movies on booking.movieID = movies.movieID 
-      LEFT JOIN cinema on booking.cinemaID = cinema.cinemaID 
+      LEFT JOIN schedule on booking.scheduleID = schedule.scheduleID
+      LEFT JOIN movies on schedule.movieID = movies.movieID
       ORDER BY booking.created_at DESC`;
       db.query(sql, (err, results) => {
         if (err) {
@@ -23,13 +23,32 @@ module.exports = {
       });
     });
   },
+  getById: (req, res) => {
+    return new Promise((resolve, reject) => {
+      const {bookingID} = req.params
+      const sql = `SELECT * FROM movies WHERE bookingID=${bookingID}`;
+
+      db.query(sql, (err, results) => {
+        if (err) {
+          reject({
+            message: "Something wrong",
+          });
+        }
+        resolve({
+          message: "Get booking by id success",
+          status: 200,
+          data: results,
+        });
+      });
+    });
+  },
   add: (req, res) => {
     // add done
     return new Promise((resolve, reject) => {
-      const { movieID, cinemaID, playDate, time, ticketPrice, seat } = req.body;
+      const { scheduleID, user_id, seats } = req.body;
 
       db.query(
-        `INSERT INTO booking(movieID, cinemaID, playDate, time, ticketPrice, seat) VALUES('${movieID}','${cinemaID}','${playDate}','${time}','${ticketPrice}','${seat}')`,
+        `INSERT INTO booking(scheduleID, user_id, seats) VALUES('${scheduleID}', '${user_id}', '${seats}')`,
         (err, results) => {
           if (err) {
             console.log(err);
@@ -42,7 +61,7 @@ module.exports = {
               id: results.insertId,
               ...req.body,
             },
-          });
+          }) 
         }
       );
     });
@@ -60,11 +79,11 @@ module.exports = {
           ...results[0],
           ...req.body,
         };
-        const { movieID, cinemaID, playDate, time, ticketPrice, seat } =
+        const { scheduleID, cinemaID, user_id, playDate, seats } =
           previousData;
 
         db.query(
-          `UPDATE booking SET movieID='${movieID}', cinemaID='${cinemaID}', playDate='${playDate}', time='${time}', ticketPrice='${ticketPrice}', seat='${seat}' WHERE bookingID='${bookingID}'`,
+          `UPDATE booking SET scheduleID='${scheduleID}', cinemaID='${cinemaID}', user_id='${user_id}',playDate='${playDate}', seat='${seats}' WHERE bookingID='${bookingID}'`,
           (err, results) => {
             if (err) {
               console.log(err);

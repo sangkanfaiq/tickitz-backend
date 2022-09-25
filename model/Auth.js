@@ -56,7 +56,7 @@ module.exports = {
     });
   },
   register: (req, res) => {
-    const { firstName, lastName, phoneNumber, email, password, image } = req.body;
+    const { firstName, lastName, phoneNumber, city, country, email, password, image } = req.body;
     return new Promise((resolve, reject) => {
       bcrypt.hash(password, 10, function (err, hashedPassword) {
         if (err) {

@@ -10,7 +10,7 @@ module.exports = {
     const { email, password } = req.body;
     return new Promise((resolve, reject) => {
       db.query(
-        `SELECT userID, password, firstName, lastName, phoneNumber, city, country, balance,role FROM users WHERE email='${email.toLowerCase()}'`,
+        `SELECT userID, password, firstName, lastName, phoneNumber, city, country, role FROM users WHERE email='${email.toLowerCase()}'`,
         (err, results) => {
           if (err) {
             console.log(err)
@@ -26,7 +26,7 @@ module.exports = {
                   })
                 }
                 if(successHashing) {
-                  const token = jwt.sign({ user_id: results[0].userID, firstName:results[0].firstName, lastName: results[0].lastName, phoneNumber:results[0].phoneNumber, city:results[0].city, country: results[0].country, balance:results[0].balance, role: results[0].role}, process.env.JWT_SECRET_KEY, {expiresIn: '1 day'});
+                  const token = jwt.sign({ user_id: results[0].userID, firstName:results[0].firstName, lastName: results[0].lastName, phoneNumber:results[0].phoneNumber, city:results[0].city, country: results[0].country, role: results[0].role}, process.env.JWT_SECRET_KEY, {expiresIn: '1 day'});
                   resolve({
                     message: "Login success",
                     status: 200,
@@ -39,7 +39,7 @@ module.exports = {
                       phoneNumber: results[0].phoneNumber,
                       city: results[0].city,
                       country: results[0].country,
-                      balance: results[0].balance,
+                      // balance: results[0].balance,
                       role: results[0].role
                     },
                   });
@@ -56,14 +56,14 @@ module.exports = {
     });
   },
   register: (req, res) => {
-    const { firstName, lastName, phoneNumber, city, country, balance, email, password, image } = req.body;
+    const { firstName, lastName, phoneNumber, city, country, email, password, image } = req.body;
     return new Promise((resolve, reject) => {
       bcrypt.hash(password, 10, function (err, hashedPassword) {
         if (err) {
           reject({ message: "Something wrong" });
         } else {
           db.query(
-            `INSERT INTO users(firstName, lastName, phoneNumber, city, country, balance, email, password, image) VALUES('${firstName}', '${lastName}', '${phoneNumber}', '${city}', '${country}', ${balance}, '${email}', '${hashedPassword}', '${image}')`,
+            `INSERT INTO users(firstName, lastName, phoneNumber, city, country, email, password, image) VALUES('${firstName}', '${lastName}', '${phoneNumber}', '${city}', '${country}', '${email}', '${hashedPassword}', '${image}')`,
             (err, results) => {
               if (err) {
                 reject({ message: "Email already used" });

@@ -23,8 +23,8 @@ module.exports = {
   add: (req, res) => {
     // add done
     return new Promise((resolve, reject) => {
-      const { cinemaName, price, cinemaShortname, cinemaAddress, cinemaCover } = req.body;
-      const sql = `INSERT INTO cinema(cinemaName, cinemaShortname, cinemaAddress, price, cinemaCover) VALUES ('${cinemaName}', '${cinemaShortname}', '${cinemaAddress}', '${price}', '${cinemaCover}')`;
+      const { cinemaName, price, cinemaShortname, cinemaPlace, cinemaAddress, cinemaCover } = req.body;
+      const sql = `INSERT INTO cinema(cinemaName, cinemaShortname, cinemaPlace, cinemaAddress, price, cinemaCover) VALUES ('${cinemaName}', '${cinemaShortname}', '${cinemaPlace}','${cinemaAddress}', '${price}', '${cinemaCover}')`;
 
       db.query(sql, (err, results) => {
         if (err) {
@@ -57,10 +57,10 @@ module.exports = {
             ...results[0],
             ...req.body,
           };
-          const { cinemaName, cinemaShortname, cinemaAddress, price, cinemaCover } = previousData;
+          const { cinemaName, cinemaShortname, cinemaPlace, cinemaAddress, price, cinemaCover } = previousData;
 
           db.query(
-            `UPDATE cinema SET cinemaName='${cinemaName}', cinemaShortname='${cinemaShortname}', cinemaAddress='${cinemaAddress}', price='${price}', cinemaCover='${cinemaCover}' WHERE cinemaID='${cinemaID}'`,
+            `UPDATE cinema SET cinemaName='${cinemaName}', cinemaShortname='${cinemaShortname}', cinemaPlace='${cinemaPlace}',cinemaAddress='${cinemaAddress}', price='${price}', cinemaCover='${cinemaCover}' WHERE cinemaID='${cinemaID}'`,
             (err, results) => {
               if (err) {
                 console.log(err);

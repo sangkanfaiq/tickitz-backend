@@ -47,10 +47,10 @@ module.exports = {
   add: (req, res) => {
     // add done
     return new Promise((resolve, reject) => {
-      const { scheduleID, user_id, seats } = req.body;
+      const { scheduleID, user_id, seats, selected_time } = req.body;
 
       db.query(
-        `INSERT INTO booking(scheduleID, user_id, seats) VALUES('${scheduleID}', '${user_id}', '${seats}')`,
+        `INSERT INTO booking(scheduleID, user_id, seats) VALUES('${scheduleID}', '${user_id}', '${seats}', '${selected_time}')`,
         (err, results) => {
           if (err) {
             console.log(err);
@@ -81,11 +81,11 @@ module.exports = {
           ...results[0],
           ...req.body,
         };
-        const { scheduleID, cinemaID, user_id, playDate, seats } =
+        const { scheduleID, cinemaID, user_id, playDate, seats, selected_time } =
           previousData;
 
         db.query(
-          `UPDATE booking SET scheduleID='${scheduleID}', cinemaID='${cinemaID}', user_id='${user_id}',playDate='${playDate}', seat='${seats}' WHERE bookingID='${bookingID}'`,
+          `UPDATE booking SET scheduleID='${scheduleID}', cinemaID='${cinemaID}', user_id='${user_id}',playDate='${playDate}', seat='${seats}', selected_time='${selected_time}' WHERE bookingID='${bookingID}'`,
           (err, results) => {
             if (err) {
               console.log(err);

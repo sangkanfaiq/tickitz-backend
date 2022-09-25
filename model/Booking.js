@@ -9,6 +9,7 @@ module.exports = {
       LEFT JOIN schedule on booking.scheduleID = schedule.scheduleID
       LEFT JOIN movies on schedule.movieID = movies.movieID
       LEFT JOIN cinema on schedule.cinemaID = cinema.cinemaID
+      LEFT JOIN location on schedule.locationID = location.locationID
       ORDER BY booking.created_at DESC`;
       db.query(sql, (err, results) => {
         if (err) {

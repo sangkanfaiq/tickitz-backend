@@ -58,7 +58,7 @@ Get started with this project, intructions on setting up your project locally.<b
 To get a local copy up and running follow these simple steps.
 ### Prerequisites
 
-Before installing, you must be install [node js](https://nodejs.org) and [yarn](https://yarnpkg.com/getting-started/install)
+Before installing, you must install [node js](https://nodejs.org) and [yarn](https://yarnpkg.com/getting-started/install)
 ### Installation
 
 1. Clone this repo

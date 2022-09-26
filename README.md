@@ -30,6 +30,8 @@ Tickitz backend made with express js, nodejs, mysql
 - CRUD on schedule
 - CRUD on location
 - CRUD on cinema
+- CRUD on booking
+- CRUD on payment
 - Login/Register
 - Search movies
 - Sort movie by genre

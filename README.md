@@ -35,6 +35,7 @@ Tickitz backend made with express js, nodejs, mysql
 - Authentication(Login/Register)
 - Search movies
 - Sort movie by genre
+- Pagination
 
 ### Author
 [Sangkan Faiq](https://github.com/sangkanfaiq)

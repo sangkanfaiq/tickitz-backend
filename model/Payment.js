@@ -6,7 +6,7 @@ module.exports = {
     return new Promise((resolve, reject) => {
       //   const { title = "", director = "" } = req.query;
       const sql = `SELECT * FROM payment 
-      LEFT JOIN booking on payment.id_booking = booking.id_booking
+      LEFT JOIN booking on payment.id = booking.bookingID
       ORDER BY payment.created_at DESC`;
       db.query(sql, (err, results) => {
         if (err) {

@@ -32,7 +32,7 @@ Tickitz backend made with express js, nodejs, mysql
 - CRUD on cinema
 - CRUD on booking
 - CRUD on payment
-- Login/Register
+- Authentication(Login/Register)
 - Search movies
 - Sort movie by genre
 
